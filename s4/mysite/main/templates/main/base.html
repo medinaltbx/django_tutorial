@@ -1,0 +1,17 @@
+<html>
+<head>
+    <title>{% block title %}Cristian's site{% endblock %}</title>
+</head>
+
+<body>
+    <!--Pasamos una variable "name"
+    <p>{{name}}</p>
+    -->
+    <div id="content", name= "content">
+        <!--En este bloque podemos decir que queremos poner a partir de otro archivo-->
+        {% block content %}
+        {% endblock %}
+    </div>
+    
+</body>
+</html>
