@@ -1,0 +1,42 @@
+{% extends "main/base.html" %}
+{% block title %}View list{% endblock %}
+
+{% block content %}
+    <h1>{{ls.name}}</h1>
+    <!--Pasamos informacion obtenida con post-->
+    <form method="post" action="#">
+        <!--Para que funcione por seguridad-->
+        {% csrf_token %}
+        <!--Como no sabemos cuantos items tenemos, hemos de loopear sobre ellos-->
+        {% for item in ls.item_set.all %} <!--Si ponemos () en el metodo all genera un error-->
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    {% if item.complete == True %}
+                        <!--Añade checkbox al lado de item. Como esta completo, el checkbox estara checked de default-->
+                        <input type="checkbox", value="clicked", name="c{{item.id}}" checked>
+                    {% else %}
+                        <input type="checkbox", value="clicked", name="c{{item.id}}">
+                    {% endif %}
+                </div>
+            </div>
+            <input type="text", value="{{item.text}}" class="form-control">
+        </div>
+        {% endfor %}
+        
+
+        <div class="input-group mb-3"><!--Tabula elementos-->
+            <div class="input-group-prepend">    
+                <!--Añade Item de TextField-->
+                <button type="submit", name="newItem", value="newItem", class="btn btn-success">Add Item</button>
+            </div>
+            <!--TextField-->
+            <input type="text", name="new">
+        </div>
+
+        <!--Guarda los cambios en las checkboxes-->
+        <!--Cuando cliquemos el boton, se creara un diccionario con la forma {"save":["save"],"c1"}-->
+        <button type="submit", name="save", value="save", class="btn btn-success">Save</button>
+
+    </form>
+{% endblock %}
