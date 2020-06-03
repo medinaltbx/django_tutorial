@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+    <!--Aqui va todo el estilo de la sidebar-->
+    <style type="text/css">
+        .sidenav {
+            height:100%;/*Que ocupe toda la altura de la pagina*/
+            width:160px;/*Que ocupe 160 pixels*/
+            position: fixed;
+            z-index:1;
+            top:0;
+            left:0;
+            background-color: #111;
+            overflow-x: hidden;/*Se asegura que la sidebar no esta horizontal*/
+            padding-top: 20px;
+        }
+
+        /*Define como los links dentro de la sidebar se van a ver*/
+        .sidenav a {
+            padding: 6px 8px 6px 16px;
+            text-decoration: none;
+            font-size: 25px;
+            color: aqua;
+            display: block;
+        }
+        
+        /*Cuando pasamos el raton por encima cambia de color*/
+        .sidenav a:hover{
+            color: #8357ca;
+        }
+
+        /*Hace que el contenido de main este a la derecha de la sidebar*/
+        .main{
+            margin-left: 160px;
+            padding: 0px 10px;
+        }
+
+    </style>
+
+    <!--Propiedades necesarias para el funcionamiento de la web-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--Añadir bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>{% block title %}Cristian's site{% endblock %}</title>
+</head>
+
+<body>
+    <!--Añade la sidebar con los contenidos-->
+    <div class="sidenav">
+        <a href="/home">Home</a>
+        <a href="/create">Create</a>
+        <a href="/2">View</a>
+    </div>
+
+    <div id="content", name= "content", class="main">
+        <div class="row justify-content-center"><!--Clase predefinida que mueve contenido al centro-->
+            <div class="col-8">    
+                <h1 class="mt-2">My Site</h1> <!--Clase predefinida mt-2-->
+                <hr class="mt-0 mb-4"> <!--Clase predefinida que crea una linea debajo del header-->
+                <!--En este bloque podemos decir que queremos poner a partir de otro archivo que incluya el mismo bloque-->
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+
+    <!--Scrips usados por las clases css para animar y estilizar-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+</body>
+</html>

@@ -1,0 +1,15 @@
+{% extends "main/base.html" %}
+
+{% block title %}Create an Account{% endblock %}
+<!--Carga crispy forms. Para utilizarlo, debemos usar"|crispy" al lado de la form a la que queramos aplicarlo-->
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <!--Como necesitamos que la informacion se guarde de forma segura, el metodo ha de ser POST-->
+    <form method="POST" class="form-group">
+        {% csrf_token %}
+        <!--"form viene de register.views.register"-->
+        {{form|crispy}}
+        <button type="submit" class="btn btn-success">Register</button>
+    </form>
+{% endblock %}
